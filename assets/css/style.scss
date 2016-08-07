@@ -1,9 +1,12 @@
+#chat_output {
+	padding-bottom: 200px;
+}
+
 #chat_input {
 	position: fixed;
 	width: 100%;
 	bottom: 0;
 	left: 0;
-	height: 9.375em; /* 150px / 16 */
 	background-color: #ddd;
 	.meeting_process_bar {
 		background-color: #aaa;
