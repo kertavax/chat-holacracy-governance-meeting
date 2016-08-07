@@ -5,6 +5,7 @@
 	var pubnub = PUBNUB.init({
 		publish_key: 'pub-c-965c2c1a-af86-4cdd-bfd9-7d390b4d85d3',
 		subscribe_key: 'sub-c-6037cec6-54ff-11e6-bd9c-0619f8945a4f',
+		ssl: true,
 		error: function(error) {
 			console.log("Error of doom!", error);
 		}
