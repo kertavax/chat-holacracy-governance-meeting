@@ -6,6 +6,7 @@
 	<title></title>
 	<link rel="stylesheet" href="assets/libs/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css">
 	<link rel="stylesheet" href="assets/css/style.css">
+	<script src="assets/libs/pubnub-3.15.2/pubnub-3.15.2.min.js"></script>
 	<script src="assets/libs/jquery-2.2.4/jquery-2.2.4.min.js"></script>
 	<script src="assets/libs/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
@@ -56,8 +57,8 @@
 			
 		</div>
 
-		<div id="chat_output">
-			<ul>
+		<div>
+			<ul id="chat_output">
 				<li>
 					<h4>Facilibot <span><small>(August 7, 2016, 3:45pm)</small></span></h4>
 					<p>Welcome everyone! We’ll be starting with a <em>Check-in Round</em> (1/5) to get us going.</p>
@@ -70,8 +71,8 @@
 		<div id="chat_input">
 			
 			<label for="checkin_input" class="ui-hidden-accessible">Checkin input</label>
-			<input type="text" name="checkin_input" id="checkin_input" placeholder="Type here" value="" />
-			<button class="ui-btn ui-btn-inline">Share</button>
+			<input type="text" name="checkin_input" id="checkin_input" placeholder="Type here" />
+			<button id="btn_checkin" class="ui-btn ui-btn-inline">Share</button>
 		</div>
 
 	</div>
@@ -79,5 +80,6 @@
 
 
 	</div>
+	<script src="assets/js/pubnub-basic-chat.js"></script>
 </body>
 </html>
