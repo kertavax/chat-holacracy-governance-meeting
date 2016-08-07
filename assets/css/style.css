@@ -5,7 +5,15 @@
   left: 0;
   height: 9.375em;
   /* 150px / 16 */
-  border: 1px solid magenta; }
+  background-color: #ddd; }
+  #chat_input .meeting_process_bar {
+    background-color: #aaa; }
+    #chat_input .meeting_process_bar .finished {
+      width: 20%;
+      font-size: 0.8em;
+      color: #fff;
+      text-shadow: none;
+      background-color: #333; }
 
 .clearfix:after {
   content: " ";

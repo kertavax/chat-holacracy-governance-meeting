@@ -1,5 +1,4 @@
 (function(){
-	console.log("can you hear me?");
 	var pubnub;
 	var channel = "holgov_test1";
 
@@ -20,7 +19,8 @@
 		channel: channel,
 		callback: function(m) {
 			chat_output.append(
-				"<li>" + m.text + "</li>"
+				"<li><h4>" + "User " + "<span><small>" + "(timetoken, eg., August 7, 2016, 3:45pm)" + "</small></span></h4>" +
+				"<p>" + m.text + "</p></li>"
 			);
 		}
 	});
