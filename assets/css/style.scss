@@ -1,0 +1,14 @@
+#chat_input {
+	position: fixed;
+	width: 100%;
+	bottom: 0;
+	left: 0;
+	height: 9.375em; /* 150px / 16 */
+	border: 1px solid magenta;
+}
+
+.clearfix:after {
+	content:" ";
+	display:block;
+	clear:both;
+}

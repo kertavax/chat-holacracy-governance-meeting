@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<link rel="stylesheet" href="assets/libs/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css">
+	<link rel="stylesheet" href="assets/css/style.css">
+	<script src="assets/libs/jquery-2.2.4/jquery-2.2.4.min.js"></script>
+	<script src="assets/libs/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+</head>
+<body>
+	<div data-role="page" id="00_intro">
+		
+		<div role="main" class="ui-content">
+			<h2>Welcome to “Holacracy Governance Meeting as chat”!</h2>
+			<p>I am <em>Facilibot</em>, your faithful guide through the upcoming process.</p>
+			<p>You will be assigned a role at <em>Better Training Videos</em> – a health and fitness coaching organization priding themselves in providing accessibility and tutorials via online videos.</p>
+			<p>Are you ready to start?</p>
+			<p><a href="#01_role_assignment">Yes! Tell me my powers!</a></p>
+		</div>
+
+	</div>
+
+	<div data-role="page" id="01_role_assignment">
+		
+		<div role="main" class="ui-content">
+			<p>Here is your role …</p>
+			<h2>Social Media Butterfly</h2>
+			
+			<p>Purpose</p>
+			<ul>
+				<li><em>To be determined in the upcoming process</em></li>
+			</ul>
+			<p>Accountabilities</p>
+			<ul>
+				<li><em>To be determined in the upcoming process</em></li>
+			</ul>
+			<p>Domains</p>
+			<ul>
+				<li><em>To be determined in the upcoming process</em></li>
+			</ul>
+
+			<p><a href="#02_governance_meeting">Allrighty, let’s start giving me powers!</a></p>
+		</div>
+
+	</div>
+
+	<div data-role="page" id="02_governance_meeting">
+
+		<div data-role="header">
+			<nav>
+				<small>Menu</small>
+			</nav>
+			
+		</div>
+
+		<div id="chat_output">
+			<ul>
+				<li>
+					<h4>Facilibot <span><small>(August 7, 2016, 3:45pm)</small></span></h4>
+					<p>Welcome everyone! We’ll be starting with a <em>Check-in Round</em> (1/5) to get us going.</p>
+					<p><em>“Social Media Butterfly”</em>, please type in the input below a short check-in to get yourself present in the moment, here and now.</p>
+					<p>Eg., “I just came in from catching some Pokémon on my lunch break so I’m a bit winded.”</p>
+				</li>
+			</ul>
+		</div>
+
+		<div id="chat_input">
+			
+			<label for="checkin_input" class="ui-hidden-accessible">Checkin input</label>
+			<input type="text" name="checkin_input" id="checkin_input" placeholder="Type here" value="" />
+			<button class="ui-btn ui-btn-inline">Share</button>
+		</div>
+
+	</div>
+
+
+
+	</div>
+</body>
+</html>
