@@ -39,12 +39,16 @@
 
 	btn_checkin.click(function() {		
 		publish();
+		// clear input
+			$(this).val("");
 	});
 
 	checkin_input.keypress(function(event) {
 		var keycode = (event.keycode ? event.keycode : event.which);
 		if (keycode == "13") {
 			publish();
+			// clear input
+			$(this).val("");
 		};
 	})
 
