@@ -6,9 +6,11 @@
 	<title></title>
 	<link rel="stylesheet" href="assets/libs/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css">
 	<link rel="stylesheet" href="assets/css/style.css">
-	<script src="assets/libs/pubnub-3.15.2/pubnub-3.15.2.min.js"></script>
 	<script src="assets/libs/jquery-2.2.4/jquery-2.2.4.min.js"></script>
 	<script src="assets/libs/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+	<!-- <script src="assets/libs/pubnub-3.15.2/pubnub-3.15.2.min.js"></script> -->
+	<script src="//cdn.pubnub.com/pubnub-3.7.8.js"></script>
 
 </head>
 <body>
@@ -57,7 +59,7 @@
 			
 		</div>
 
-		<div>
+		<div class="ui-content">
 			<ul id="chat_output">
 				<li>
 					<h4>Facilibot <span><small>(August 7, 2016, 3:45pm)</small></span></h4>
@@ -74,7 +76,7 @@
 			</div>
 			
 			<label for="checkin_input" class="ui-hidden-accessible">Checkin input</label>
-			<input type="text" name="checkin_input" id="checkin_input" placeholder="Type in your Check-in…" />
+			<textarea name="checkin_input" id="checkin_input" placeholder="Type in your Check-in…"></textarea>
 			<button id="btn_checkin" class="ui-btn ui-btn-inline">Share</button>
 		</div>
 
