@@ -19,8 +19,9 @@
 	pubnub.subscribe({
 		channel: channel,
 		callback: function(m) {
+			// need to figure out how to input the role-assignment here
 			chat_output.append(
-				"<li><h4>" + "User " + "<span><small>" + "(timetoken, eg., August 7, 2016, 3:45pm)" + "</small></span></h4>" +
+				"<li><h4>" + your_role.name + " <span><small>" + "(timetoken, eg., August 7, 2016, 3:45pm)" + "</small></span></h4>" +
 				"<p>" + m.text + "</p></li>"
 			);
 		}
@@ -38,7 +39,7 @@
 		});
 	}
 
-	btn_checkin.click(function() {		
+	btn_checkin.on("click", function() {		
 		publish();
 		// clear input
 			$(this).val("");
