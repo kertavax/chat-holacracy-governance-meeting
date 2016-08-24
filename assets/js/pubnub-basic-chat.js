@@ -1,4 +1,4 @@
-(function(){
+// (function(){ // commented because of variable scope (your_role f. ex.)
 	var pubnub;
 	var channel = "holgov_test1";
 
@@ -54,7 +54,7 @@
 		};
 	})
 
-})();
+// })();
 
 
 
