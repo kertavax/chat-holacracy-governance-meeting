@@ -14,11 +14,11 @@
 	<div data-role="page" id="page00_intro">
 		
 		<div role="main" class="ui-content">
-			<h2>Welcome to “Holacracy Governance Meeting as chat”!</h2>
+			<h1>Welcome to “Holacracy Governance Meeting as chat”!</h1>
 			<p>I am <em>Facilibot</em>, your faithful guide through the upcoming process.</p>
-			<p>You will be assigned a role at <em>Better Training Videos</em> – a health and fitness coaching organization priding themselves in providing accessibility and tutorials via online videos.</p>
+			<p>You will be assigned a role at <em>Better Training Videos</em> – a health and fitness coaching organization priding themselves in providing exquisite training tutorials via online videos.</p>
 			<p>Are you ready to start?</p>
-			<p><a href="#page01_role_assignment">Yes! Tell me my powers!</a></p>
+			<a href="#page01_role_assignment" class="ui-btn">Yes! What’s my role?</a>
 		</div>
 
 	</div>
@@ -27,22 +27,16 @@
 		
 		<div role="main" class="ui-content">
 			<p>Here is your role …</p>
-			<h2>Social Media Butterfly</h2>
+			<h2>{{ undefined role }}</h2>
 			
 			<p>Purpose</p>
-			<ul>
-				<li><em>To be determined in the upcoming process</em></li>
-			</ul>
+			<ul class="purpose-list"></ul>
 			<p>Accountabilities</p>
-			<ul>
-				<li><em>To be determined in the upcoming process</em></li>
-			</ul>
+			<ul class="accountabilities-list"></ul>
 			<p>Domains</p>
-			<ul>
-				<li><em>To be determined in the upcoming process</em></li>
-			</ul>
+			<ul class="domains-list"></ul>
 
-			<p><a href="#page02_governance_meeting">Allrighty, let’s start giving me powers!</a></p>
+			<a href="#page02_governance_meeting" class="ui-btn">Allrighty, let’s get to getting me some powers!</a>
 		</div>
 
 	</div>
@@ -61,8 +55,8 @@
 				<li>
 					<h4>Facilibot <span><small>(August 7, 2016, 3:45pm)</small></span></h4>
 					<p>Welcome everyone! We’ll be starting with a <em>Check-in Round</em> (1/5) to get us going.</p>
-					<p><em>“Social Media Butterfly”</em>, please type in the input below a short check-in to get yourself present in the moment, here and now.</p>
-					<p>Eg., “I just came in from catching some Pokémon on my lunch break so I’m a bit winded.”</p>
+					<p><span class="role_name">{{ role.name }}</span>, please type in the input below a short check-in to get yourself present in the moment, here and now.</p>
+					<p class="example">Eg., “I just came in from catching some Pokémon on my lunch break so I’m a bit winded.”</p>
 				</li>
 			</ul>
 		</div>
@@ -79,9 +73,8 @@
 
 	</div>
 
-
-
 	</div>
+	<script src="assets/js/role-assignment.js"></script>
 	<script src="assets/js/pubnub-basic-chat.js"></script>
 </body>
 </html>

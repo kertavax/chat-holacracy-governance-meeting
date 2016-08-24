@@ -1,0 +1,26 @@
+// Test Roles 
+{
+	"organization": "Better Training Videos",
+	"roles": [{
+			"name": "Social Media Butterfly",
+			"purpose": "",
+			"accountabilities": [],
+			"domains": []
+		},{
+			"name": "Training Videos Builder",
+			"purpose": "",
+			"accountabilities": [],
+			"domains": []
+		},{
+			"name": "Financial Sphinx",
+			"purpose": "",
+			"accountabilities": [],
+			"domains": []
+		},{
+			"name": "Website Guru",
+			"purpose": "",
+			"accountabilities": [],
+			"domains": []
+		}
+	]
+}

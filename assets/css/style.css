@@ -4,11 +4,16 @@
 
 #chat_output {
   padding-bottom: 200px; }
+  #chat_output p span.role_name {
+    font-style: italic; }
+  #chat_output p.example {
+    color: #999; }
 
 #chat_input {
   position: fixed;
   width: 100%;
   bottom: 0;
+  /* -70px/16px */
   left: 0;
   background-color: #ddd; }
   #chat_input .meeting_process_bar {
