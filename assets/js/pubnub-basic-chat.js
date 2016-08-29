@@ -18,6 +18,13 @@
 	
 	pubnub.subscribe({
 		channel: channel,
+		presence: function(m) {
+			console.log(m);
+		},
+		state: {
+			name: 'presence-tutorial-user',
+			timestamp: new Date()
+		},
 		callback: function(m) {
 			// need to figure out how to input the role-assignment here
 			chat_output.append(
