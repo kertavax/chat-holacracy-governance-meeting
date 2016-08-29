@@ -2,6 +2,10 @@
 	var pubnub;
 	var channel = "holgov_test1";
 
+	// DOM element jQuery selectors
+	var role_stage = $("#page01_role_assignment");
+	var governance_stage = $("#page02_governance_meeting");
+
 	var User = function(user_id, org_object) {
 		this.uuid = user_id;
 		this.assignRole = function() {
@@ -11,10 +15,6 @@
 			return assigned_role;
 		}
 	}
-
-	var haley = new User(300, org_data.roles);
-
-	console.log(haley.assignRole());
 
 	var pubnub = PUBNUB.init({
 		publish_key: 'pub-c-965c2c1a-af86-4cdd-bfd9-7d390b4d85d3',
@@ -33,6 +33,9 @@
 	pubnub.subscribe({
 		channel: channel,
 		presence: function(m) {
+			var haley = new User(m.uuid, org_data.roles);
+			console.log(haley.assignRole());
+			role_stage.find("h2").text(haley.name);
 			// console.log(m);
 		},
 		state: {

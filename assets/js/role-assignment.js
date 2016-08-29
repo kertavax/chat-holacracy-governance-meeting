@@ -47,23 +47,23 @@ var governance_stage = $("#page02_governance_meeting");
 var apply_role = function(your_role) {
 	role_stage.find("h2").text(your_role.name);
 
-	if (your_role.purpose == "") {
-	console.log("no purpose");
-	} else {
-		console.log("your purpose: " + your_role.purpose);
-	}
+	// if (your_role.purpose == "") {
+	// 	console.log("no purpose");
+	// } else {
+	// 	console.log("your purpose: " + your_role.purpose);
+	// }
 
-	if (your_role.accountabilities == "") {
-		console.log("no accountabilities");
-	} else {
-		console.log("your accountabilities: " + your_role.accountabilities);
-	}
+	// if (your_role.accountabilities == "") {
+	// 	console.log("no accountabilities");
+	// } else {
+	// 	console.log("your accountabilities: " + your_role.accountabilities);
+	// }
 
-	if (your_role.domains == "") {
-		console.log("no domains");
-	} else {
-		console.log("your domains: " + your_role.domains);
-	}
+	// if (your_role.domains == "") {
+	// 	console.log("no domains");
+	// } else {
+	// 	console.log("your domains: " + your_role.domains);
+	// }
 }
 
 apply_role(your_role);
