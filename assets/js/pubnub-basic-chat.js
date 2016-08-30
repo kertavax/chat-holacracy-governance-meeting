@@ -54,7 +54,7 @@
 	pubnub.here_now({
 		channel: channel,
 		callback: function(m) {
-			// console.log(m);
+			console.log(m);
 		}
 	})
 
