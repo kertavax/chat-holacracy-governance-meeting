@@ -7,22 +7,41 @@
 			"purpose": "Pollinate the web with information regarding our training videos",
 			"accountabilities": ["Creating or sourcing quick-to-consume content of interest to Better Training Videos’s market and posting to social media channels", "Responding to misinformation about Better Training Videos on social media channels", "Monitoring social media channels and routing or responding to relevant follow-up comments on posted content"],
 			"domains": ["Better Training Videos’s social media accounts"],
-			"tension": "People online have been stating that the training videos don’t accurately represent our offers made in our marketing materials"
+			"tensions": "People online have been stating that the training videos don’t accurately represent our offers made in our marketing materials"
 		},{
 			"name": "Marketing Maven",
 			"purpose": "Help the world to know and love Better Training Videos and our products and services",
 			"accountabilities": ["Defining and implementing coordinated strategies and initiatives to spread awareness of the products/services we offer to help people with Better Training Videos"],
 			"domains": [],
-			"tension": "There is a need of copywriting for various outlets"
+			"tensions": "There is a need of copywriting for various outlets"
 		}]
 	};
 
 	var pubnub,
-			channel = "holgov_test1",
-			participants = [],
-			user = {
-				"uuid": PUBNUB.uuid()
-			};
+		channel = "holgov_test1",
+		participants = [],
+		uuid = PUBNUB.uuid();
+		User = function(role, uuid) {
+			this.role = role;
+			this.identity = uuid;
+			this.checkin_content = "";
+			this.checkin_done = false;
+			this.adminconcerns_done = false;
+			this.agendaitem_content = "";
+			this.agendaitem_done = false;
+			this.IDM_isProposer = false;
+			this.IDM_proposal_content = "";
+			this.IDM_proposal_done = false;
+			this.IDM_clarifyingQuestions_content = "";
+			this.IDM_clarifyingQuestions_done = false;
+			this.IDM_reactions_content = "";
+			this.IDM_reactions_done = false;
+			this.IDM_hasObjections = false;
+			this.IDM_objections_content = "";
+			this.IDM_objections_valid = true;
+			this.IDM_integration_content = "";
+			this.IDM_integration_done = false;
+		};
 
 	// DOM element jQuery selectors
 	var intro_stage = $("#page00_intro");
@@ -35,18 +54,16 @@
 	var pubnub = PUBNUB.init({
 		publish_key: 'pub-c-965c2c1a-af86-4cdd-bfd9-7d390b4d85d3',
 		subscribe_key: 'sub-c-6037cec6-54ff-11e6-bd9c-0619f8945a4f',
-		uuid: user.uuid,
+		uuid: uuid,
 		ssl: true,
 		error: function(error) {
 			console.log("Error of doom!", error);
 		}
 	});
 
-	participants.push(user);
+	var getRole = function(org, uuid) {
 
-	var getRole = function(org) {
-
-		var random_role_index, assigned_role, q;
+		var identity, random_role_index, assigned_role, q;
 
 		// check number of roles
 		var roles_total = org.length;
@@ -62,10 +79,10 @@
 		}
 		
 		// random role from organization_data based on number of roles
-		assigned_role = org[random_role_index];
+		assigned_role = new User(org[random_role_index], uuid);
 
 		// remove the randomly selected role from organization_data
-		q = organization_data.roles.indexOf(assigned_role);
+		q = organization_data.roles.indexOf(assigned_role.role);
 		organization_data.roles.splice(q, 1);
 
 		pubnub.publish({
@@ -75,12 +92,13 @@
 			}
 		})
 
-		// push the selected role into member_list array
+		// push the selected role into participants array
 		return participants.push(assigned_role);
 	}
 
 	intro_stage.find(".ui-btn").on("click", function() {
-		role_stage.find("h2").text(participants[0].name);
+		getRole(organization_data.roles, uuid);
+		/*role_stage.find("h2").text(participants[0].name);
 		for (var i = 0; i < participants[0].purpose.length; i++) {
 			role_stage.find(".purpose_list").append("li").text(participants[0].purpose);
 		};
@@ -90,19 +108,22 @@
 		for (var i = 0; i < participants[0].domains.length; i++) {
 			role_stage.find(".domains_list").append("li").text(participants[0].domains);
 		};
-		governance_stage.find(".role_name").text(participants[0].name);
+		for (var i = 0; i < participants[0].tensions.length; i++) {
+			role_stage.find(".tensions_list").append("li").text(participants[0].tensions);
+		};
+		governance_stage.find(".role_name").text(participants[0].name);*/
 	});
 
 	pubnub.subscribe({
 		channel: channel,
 		presence: function(m) {
-			console.log(m);
+			// console.log(m);
 		},
 		message: function(m) {
-			chat_output.append(
-				"<li><h4>" + participants[0].name + "<span><small>" + m.date + "</small></span></h4>" +
-				"<p>" + m.text + "</p></li>"
-			);
+			// chat_output.append(
+			// 	"<li><h4>" + participants[0].name + "<span><small>" + m.date + "</small></span></h4>" +
+			// 	"<p>" + m.text + "</p></li>"
+			// );
 		}
 	});
 
@@ -110,8 +131,8 @@
 		pubnub.publish({
 			channel: channel,
 			message: {
-				"text": checkin_input.val(),
-				"date": new Date()
+				// "text": checkin_input.val(),
+				// "date": new Date()
 			}
 		});
 	}
