@@ -85,60 +85,83 @@
 		q = organization_data.roles.indexOf(assigned_role.role);
 		organization_data.roles.splice(q, 1);
 
-		pubnub.publish({
-			channel: channel,
-			message: {
-				"content": "You got the role of " + assigned_role.name
-			}
-		})
-
 		// push the selected role into participants array
 		return participants.push(assigned_role);
 	}
 
 	intro_stage.find(".ui-btn").on("click", function() {
 		getRole(organization_data.roles, uuid);
-		/*role_stage.find("h2").text(participants[0].name);
-		for (var i = 0; i < participants[0].purpose.length; i++) {
-			role_stage.find(".purpose_list").append("li").text(participants[0].purpose);
+		for (var i = 0; i < participants.length; i++) {
+			if (participants[i].identity == uuid) {
+				
+				role_stage.find("h2").text(participants[i].role.name);
+				
+				role_stage.find(".purpose_list").append("li").text(participants[i].role.purpose);
+				
+				for (var a = 0; a < participants[i].role.accountabilities.length; a++) {
+					role_stage.find(".accountabilities_list").append("li").text(participants[i].role.accountabilities[a]);
+				};
+
+				for (var d = 0; d < participants[i].role.domains.length; d++) {
+					role_stage.find(".domains_list").append("li").text(participants[i].role.domains[d]);
+				};
+
+				role_stage.find(".tensions_list").append("li").text(participants[i].role.tensions);
+
+				console.log(participants[i].role.name + " has identity of " + participants[i].identity + " and is same as uuid of " +  uuid);
+			}
+			else {
+				console.log("not found")
+			}
 		};
-		for (var i = 0; i < participants[0].accountabilities.length; i++) {
-			role_stage.find(".accountabilities_list").append("li").text(participants[0].accountabilities);
-		};
-		for (var i = 0; i < participants[0].domains.length; i++) {
-			role_stage.find(".domains_list").append("li").text(participants[0].domains);
-		};
-		for (var i = 0; i < participants[0].tensions.length; i++) {
-			role_stage.find(".tensions_list").append("li").text(participants[0].tensions);
-		};
-		governance_stage.find(".role_name").text(participants[0].name);*/
 	});
+
+	role_stage.find(".ui-btn").on("click", function() {
+		for (var i = 0; i < participants.length; i++) {
+			if (participants[i].identity == uuid) {
+				chat_output.find(".role_name").text(participants[i].role.name)
+			}
+			else {
+				console.log("user not found");
+			}
+		}
+	})
 
 	pubnub.subscribe({
 		channel: channel,
+		uuid: uuid,
 		presence: function(m) {
 			// console.log(m);
 		},
 		message: function(m) {
-			// chat_output.append(
-			// 	"<li><h4>" + participants[0].name + "<span><small>" + m.date + "</small></span></h4>" +
-			// 	"<p>" + m.text + "</p></li>"
-			// );
+			chat_output.append(
+				"<li><h4>" + m.author + "<span><small>" + m.date + "</small></span></h4>" +
+				"<p>" + m.content + "</p></li>"
+			);
 		}
 	});
 
-	function publish_checkin() {
+	function publish_checkin(participant) {
 		pubnub.publish({
 			channel: channel,
 			message: {
-				// "text": checkin_input.val(),
-				// "date": new Date()
+				"author": participant.role.name,
+				"content": checkin_input.val(),
+				"date": new Date()
 			}
 		});
 	}
 
-	btn_checkin.on("click", function() {		
-		publish_checkin();
+	btn_checkin.on("click", function() {
+		for (var i = 0; i < participants.length; i++) {
+			if (participants[i].identity == uuid) {
+				publish_checkin(participants[i]);
+				participants[i].checkin_done = true;
+			}
+			else {
+				console.log("user not found");
+			}
+		}
 		// clear input
 			$(this).val("");
 	});
@@ -146,7 +169,15 @@
 	checkin_input.keypress(function(event) {
 		var keycode = (event.keycode ? event.keycode : event.which);
 		if (keycode == "13") {
-			publish_checkin();
+			for (var i = 0; i < participants.length; i++) {
+				if (participants[i].identity == uuid) {
+					publish_checkin(participants[i]);
+					participants[i].checkin_done = true;
+				}
+				else {
+					console.log("user not found");
+				}
+			}
 			// clear input
 			$(this).val("");
 		};
