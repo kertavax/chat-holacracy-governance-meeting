@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title></title>
 	<link rel="stylesheet" href="assets/libs/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css">
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="assets/css/style.css">
 	<script src="assets/libs/jquery-2.2.4/jquery-2.2.4.min.js"></script>
 	<script src="assets/libs/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
@@ -48,11 +49,70 @@
 
 	<div data-role="page" id="page02_governance_meeting">
 
-		<div data-role="header">
-			<nav>
-				<a href="#" class="ui-btn ui-corner-all ui-icon-bars ui-btn-icon-notext">Menu</a>
-			</nav>
-			
+		<div data-role="header" data-position="fixed">
+			<a href="#" id="main-menu" class="ui-btn ui-corner-all ui-icon-bars ui-btn-icon-notext show">Menu</a>
+			<div class="menu-container hide">
+				<a href="#" id="main-menu-close" class="ui-btn ui-corner-all ui-icon-delete ui-btn-icon-notext">Close</a>
+				<div data-role="collapsible">
+					<h1>Roles</h1>
+					<ul>
+						<li>
+							<h3>Marketing Maven</h3>
+							<ul>Purpose
+								<li>{{PURPOSE}}</li>
+							</ul>
+							<ul>Accountabilities
+								<li>{{ACCOUNTABILITIES}}</li>
+								<li>{{ACCOUNTABILITIES}}</li>
+								<li>{{ACCOUNTABILITIES}}</li>
+							</ul>
+							<ul>Domains
+								<li>{{DOMAINS}}</li>
+							</ul>
+							<ul>Tensions
+								<li>{{TENSION}}</li>
+							</ul>
+						</li>
+						<li>
+							<h3>Social Media Butterfly</h3>
+							<ul>Purpose
+								<li>{{PURPOSE}}</li>
+							</ul>
+							<ul>Accountabilities
+								<li>{{ACCOUNTABILITIES}}</li>
+								<li>{{ACCOUNTABILITIES}}</li>
+								<li>{{ACCOUNTABILITIES}}</li>
+							</ul>
+							<ul>Domains
+								<li>{{DOMAINS}}</li>
+							</ul>
+							<ul>Tensions
+								<li>{{TENSION}}</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<div data-role="collapsible">
+					<h1>Agenda Items</h1>
+					<ul>
+						<li>Agenda item 1</li>
+						<li>Agenda item 2</li>
+					</ul>
+				</div>
+				<div data-role="collapsible">
+					<h1>Proposals</h1>
+					<ul>
+						<li>Proposal 1</li>
+					</ul>
+				</div>
+				<div data-role="collapsible">
+					<h1>Objections</h1>
+					<ul>
+						<li>Objection 1</li>
+						<li>Objection 2</li>
+					</ul>
+				</div>
+			</div>			
 		</div>
 
 		<div class="ui-content">
