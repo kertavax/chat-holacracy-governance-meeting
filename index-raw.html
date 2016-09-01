@@ -83,7 +83,10 @@
 		<div class="ui-content">
 			<ul id="chat_output">
 				<li>
-					<h4>Facilibot <span><small>(August 7, 2016, 3:45pm)</small></span></h4>
+					<h4>Facilibot<span>
+						<br />
+						<small>August 7, 2016, 3:45pm</small></span>
+					</h4>
 					<p>Welcome everyone! We’ll be starting with a <em>Check-in Round</em> (1/5) to get us going.</p>
 					<p><span class="role_name">{{ role.name }}</span>, please type in the input below a short check-in to get yourself present in the moment, here and now.</p>
 					<p class="example">Eg., “I just came in from catching some Pokémon on my lunch break so I’m a bit winded.”</p>
@@ -93,12 +96,27 @@
 
 		<div id="chat_input">
 			<div class="meeting_process_bar">
-				<div class="finished">Check-in Round (1/5)</div>
+				<ul>
+					<li class="round_checkin active">Check-in Round (1/5)</li>
+					<li class="round_adminconcerns">Admin Concerns (2/5)</li>
+					<li class="round_agendabuilding">Agenda Building (3/5)</li>
+					<li class="round_idm">Integrative Decision-Making (4/5)</li>
+					<li class="round_closing">Closing Round (5/5)</li>
+				</ul>
 			</div>
 			
-			<label for="checkin_input" class="ui-hidden-accessible">Checkin input</label>
-			<textarea name="checkin_input" id="checkin_input" placeholder="Type in your Check-in…"></textarea>
-			<button id="btn_checkin" class="ui-btn ui-btn-inline">Share</button>
+			<div id="checkin_section">
+				<label for="checkin_input" class="ui-hidden-accessible">Checkin input</label>
+				<textarea name="checkin_input" id="checkin_input" placeholder="Type in your Check-in…"></textarea>
+				<button id="btn_checkin" class="ui-btn ui-btn-inline">Share</button>
+			</div>
+
+			<div id="agendaitem_section" class="hide">
+				<label for="agendaitem_input" class="ui-hidden-accessible">Agenda Item input</label>
+				<textarea name="agenda_input" id="agenda_input" placeholder="Capture your tension in 2 – 3 words…"></textarea>
+				<button id="btn_agendaitem" class="ui-btn ui-btn-inline">Capture</button>
+			</div>
+
 		</div>
 
 	</div>

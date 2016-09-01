@@ -26,9 +26,8 @@
 			this.identity = uuid;
 			this.checkin_content = "";
 			this.checkin_done = false;
-			this.adminconcerns_done = false;
 			this.agendaitem_content = "";
-			this.agendaitem_done = false;
+			this.agendaitem_done = true;
 			this.IDM_isProposer = false;
 			this.IDM_proposal_content = "";
 			this.IDM_proposal_done = false;
@@ -48,8 +47,12 @@
 	var role_stage = $("#page01_role_assignment");
 	var governance_stage = $("#page02_governance_meeting");	
 	var chat_output = $("#chat_output");
-	var checkin_input = $('#checkin_input');
-	var btn_checkin = $('#btn_checkin');
+	var checkin_section = $("#checkin_section")
+	var checkin_input = checkin_section.find('#checkin_input');
+	var btn_checkin = checkin_section.find('#btn_checkin');
+	var agendaitem_section = $("#agendaitem_section");
+	var agendaitem_input =agendaitem_section.find("#agendaitem_input");
+	var btn_agendaitem =agendaitem_section.find("#btn_agendaitem");
 
 	var pubnub = PUBNUB.init({
 		publish_key: 'pub-c-965c2c1a-af86-4cdd-bfd9-7d390b4d85d3',
@@ -121,7 +124,7 @@
 			if (participants[i].identity == uuid) {
 				// Populate info in menu with data
 				governance_stage.find(".menu-container").find(".role-list").html(
-						"<li><h3>Marketing Maven</h3><ul class=\"role-purpose\">Purpose<li>" + participants[i].role.purpose + "</li></ul><ul class=\"role-accountabilities\">Accountabilities<li>" + participants[i].role.accountabilities + "</li></ul><ul class=\"role-domains\">Domains<li>" + participants[i].role.domains + "</li></ul><ul class=\"role-tensions\">Tensions<li>" + participants[i].role.tensions + "</li></ul></li>"
+						"<li><h3>" + participants[i].role.name + "</h3><ul class=\"role-purpose\">Purpose<li>" + participants[i].role.purpose + "</li></ul><ul class=\"role-accountabilities\">Accountabilities<li>" + participants[i].role.accountabilities + "</li></ul><ul class=\"role-domains\">Domains<li>" + participants[i].role.domains + "</li></ul><ul class=\"role-tensions\">Tensions<li>" + participants[i].role.tensions + "</li></ul></li>"
 				);
 				
 				chat_output.find(".role_name").text(participants[i].role.name)
@@ -144,14 +147,55 @@
 		governance_stage.find(".menu-container").removeClass("show").addClass("hidden");
 	})
 
+	var facilibot_responses = function(whichround) {
+		switch(whichround) {
+			case "admin_concerns":
+				chat_output.append(
+					"<li><h4>Facilibot<span></h4>" + 
+						"<p>Thank you! Moving on, for the <em>Administrative Concerns</em> (2/5) I’ll list the time allotted for this Governance Meeting and any possible breaks.</p>" + 
+						"<p>Since I’m only a simple, kind of glitchy prototype, for now we will have unlimited time together and no breaks. Lucky us, eh?</p>" +
+					"</li>"
+				);
+				chat_output.append(
+					"<li><h4>Facilibot<span></h4>" + 
+					"<p>Now, let’s enter <em>Agenda Building</em> – a space where each participant is to capture their ‘tension’ in 2 – 3 words.</p>" + 
+					"<p class=\"example\">Tip: If you’ve forgotten your role’s predetermined tension, purpose, accountabilities or domains, you can refresh your memory be reviewing them all in the menu in the top left corner.</p>" +
+					"</li>"
+				);
+				break;
+			case "somethingelse":
+				chat_output.append(
+					"<li><h4>Facilibot<span></h4>" + 
+						"somethingelse" +
+					"</li>"
+				);
+			default:
+				chat_output.append(
+					"<li><h4>Facilibot<span></h4>" + 
+						"<p>Not sure what round this is … sorry.</p>" +
+					"</li>"
+				);
+				break;
+		}
+	}
+
 	pubnub.subscribe({
 		channel: channel,
 		uuid: uuid,
 		message: function(m) {
-			chat_output.append(
-				"<li><h4>" + m.author + "<span><br /><small>" + m.date + "</small></span></h4>" +
-				"<p>" + m.content + "</p></li>"
-			);
+			for (var i = 0; i < participants.length; i++) {
+				if (participants[i].identity == uuid) {
+					if (participants[i].checkin_done == true) {
+						facilibot_responses("admin_concerns");
+					}
+					else {
+						facilibot_responses("default");
+					}
+				}
+				else {
+					console.log("user not found");
+				}
+			}
 		}
 	});
 
@@ -164,7 +208,26 @@
 				"date": new Date()
 			}
 		});
-	}
+
+		// update progress bar
+		$(".round_checkin").removeClass("active");
+		$(".round_adminconcerns").addClass("active");
+
+		// hide checkin UI, display agenda item UI
+		checkin_section.hide();
+		agendaitem_section.removeClass("hide").show();
+	};
+
+	function publish_agendaitem(participant) {
+		pubnub.publish({
+			channel: channel,
+			message: {
+				"author": participant.role.name,
+				"content": agendaitem_input.val(),
+				"date": new Date()
+			}
+		});
+	};
 
 	btn_checkin.on("click", function() {
 		for (var i = 0; i < participants.length; i++) {
