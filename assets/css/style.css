@@ -13,6 +13,10 @@
 .menu-container {
   z-index: 100;
   background-color: rgba(0, 0, 0, 0.3); }
+  .menu-container .role-purpose, .menu-container .role-accountabilities, .menu-container .role-domains, .menu-container .role-tensions {
+    margin-bottom: 1em; }
+    .menu-container .role-purpose li, .menu-container .role-accountabilities li, .menu-container .role-domains li, .menu-container .role-tensions li {
+      font-weight: 400; }
 
 #chat_output {
   padding-bottom: 200px; }

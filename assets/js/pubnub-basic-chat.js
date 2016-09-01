@@ -119,6 +119,11 @@
 	role_stage.find(".ui-btn").on("click", function() {
 		for (var i = 0; i < participants.length; i++) {
 			if (participants[i].identity == uuid) {
+				// Populate info in menu with data
+				governance_stage.find(".menu-container").find(".role-list").html(
+						"<li><h3>Marketing Maven</h3><ul class=\"role-purpose\">Purpose<li>" + participants[i].role.purpose + "</li></ul><ul class=\"role-accountabilities\">Accountabilities<li>" + participants[i].role.accountabilities + "</li></ul><ul class=\"role-domains\">Domains<li>" + participants[i].role.domains + "</li></ul><ul class=\"role-tensions\">Tensions<li>" + participants[i].role.tensions + "</li></ul></li>"
+				);
+				
 				chat_output.find(".role_name").text(participants[i].role.name)
 			}
 			else {
@@ -133,7 +138,7 @@
 		governance_stage.find(".menu-container").removeClass("hidden").addClass("show");
 	})
 
-	// hide menu
+	// hide menu-container (and show menu-btn)
 	governance_stage.find("#main-menu-close").on("click", function() {
 		governance_stage.find("#main-menu").removeClass("hide").addClass("show");
 		governance_stage.find(".menu-container").removeClass("show").addClass("hidden");
@@ -142,9 +147,6 @@
 	pubnub.subscribe({
 		channel: channel,
 		uuid: uuid,
-		presence: function(m) {
-			// console.log(m);
-		},
 		message: function(m) {
 			chat_output.append(
 				"<li><h4>" + m.author + "<span><br /><small>" + m.date + "</small></span></h4>" +
