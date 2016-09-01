@@ -1,6 +1,18 @@
 #page02_governance_meeting nav {
   position: fixed;
-  top: 0; }
+  top: 0;
+  left: 1em; }
+
+/* helpers */
+.hide {
+  display: none; }
+
+.show {
+  display: block; }
+
+.menu-container {
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.3); }
 
 #chat_output {
   padding-bottom: 200px; }

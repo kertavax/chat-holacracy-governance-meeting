@@ -8,11 +8,17 @@
 	<link rel="stylesheet" href="assets/css/style.css">
 	<script src="assets/libs/jquery-2.2.4/jquery-2.2.4.min.js"></script>
 	<script src="assets/libs/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
 	<script src="assets/libs/pubnub-3.15.2/pubnub-3.15.2.min.js"></script>	
+	<script src="https://cdn.pubnub.com/sdk/pubnub-angular/pubnub-angular-3.2.1.min.js"></script>
 </head>
-<body onload="present_data()">
-
-<button onclick="getRole(organization_data.roles)">Get Role</button>
+<body ng-app="BidirectionalApp">
+	<button class="volUp">Increase</button>
+	<button class="volDown">Decrease</button>
+	<div class="output"></div>
+	<div class="history">
+		<ul></ul>
+	</div>
 
 	<script src="assets/js/simple-tests.js"></script>
 </body>

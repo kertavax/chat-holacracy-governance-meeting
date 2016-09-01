@@ -125,6 +125,18 @@
 				console.log("user not found");
 			}
 		}
+	});
+
+	// show menu-container (and hide menu-btn)
+	governance_stage.find("#main-menu").on("click", function() {
+		governance_stage.find("#main-menu").removeClass("show").addClass("hide");
+		governance_stage.find(".menu-container").removeClass("hidden").addClass("show");
+	})
+
+	// hide menu
+	governance_stage.find("#main-menu-close").on("click", function() {
+		governance_stage.find("#main-menu").removeClass("hide").addClass("show");
+		governance_stage.find(".menu-container").removeClass("show").addClass("hidden");
 	})
 
 	pubnub.subscribe({
@@ -135,7 +147,7 @@
 		},
 		message: function(m) {
 			chat_output.append(
-				"<li><h4>" + m.author + "<span><small>" + m.date + "</small></span></h4>" +
+				"<li><h4>" + m.author + "<span><br /><small>" + m.date + "</small></span></h4>" +
 				"<p>" + m.content + "</p></li>"
 			);
 		}
