@@ -16,9 +16,18 @@
 	display: block;
 }
 
+.removePad {
+	margin-top: 0;
+}
+
 .menu-container {
-	z-index: 100;
 	background-color: rgba(0, 0, 0, 0.3);
+	.role-purpose, .role-accountabilities, .role-domains, .role-tensions {
+		margin-bottom: 1em;
+		li {
+			font-weight: 400;
+		}
+	}
 }
 
 #chat_output {
@@ -38,13 +47,28 @@
 	left: 0;
 	background-color: #ddd;
 	.meeting_process_bar {
+		.active {
+			background: #333;
+		}
 		background-color: #aaa;
-		.finished {
-			width: 20%;
-			font-size: 0.8em;
-			color: #fff;
-			text-shadow: none;
-			background-color: #333;
+		ul {
+			margin: 0;
+			padding: 0;
+			li {
+				display: inline;
+				margin: 0;
+				padding: 0 0.5em 0 0;
+				border-right: 1px solid #fff;
+				list-style-type: none;
+				width: 20%;
+				font-size: 0.7em;
+				color: #fff;
+				text-shadow: none;
+				background-color: #aaa;
+				&:last-child {
+					border: none;
+				}
+			}
 		}
 	}
 }

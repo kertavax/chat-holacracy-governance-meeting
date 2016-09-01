@@ -42,83 +42,52 @@
 			<p><small>The goal of processing tensions by going through a Holacracy Governance Meeting is to verify that roles in the Roles Records have an explicit set <em>purpose</em>, <em>accountabilities</em> and, possibly, a <em>domain</em> or two.</small></p>
 			<p><small>Tensions are opportunities of creating, amending or removing roles and/or their purpose, accountabilities and domains in the Roles Records.</small></p>
 
-			<a href="#page02_governance_meeting" class="ui-btn">Allrighty, I think I’ve got it. Let’s get this show on the road!</a>
+			<a href="#page02_governance_meeting" class="ui-btn">Let’s solve my tension!</a>
 		</div>
 
 	</div>
 
 	<div data-role="page" id="page02_governance_meeting">
-
-		<div data-role="header" data-position="fixed">
-			<a href="#" id="main-menu" class="ui-btn ui-corner-all ui-icon-bars ui-btn-icon-notext show">Menu</a>
-			<div class="menu-container hide">
-				<a href="#" id="main-menu-close" class="ui-btn ui-corner-all ui-icon-delete ui-btn-icon-notext">Close</a>
-				<div data-role="collapsible">
-					<h1>Roles</h1>
-					<ul>
-						<li>
-							<h3>Marketing Maven</h3>
-							<ul>Purpose
-								<li>{{PURPOSE}}</li>
-							</ul>
-							<ul>Accountabilities
-								<li>{{ACCOUNTABILITIES}}</li>
-								<li>{{ACCOUNTABILITIES}}</li>
-								<li>{{ACCOUNTABILITIES}}</li>
-							</ul>
-							<ul>Domains
-								<li>{{DOMAINS}}</li>
-							</ul>
-							<ul>Tensions
-								<li>{{TENSION}}</li>
-							</ul>
-						</li>
-						<li>
-							<h3>Social Media Butterfly</h3>
-							<ul>Purpose
-								<li>{{PURPOSE}}</li>
-							</ul>
-							<ul>Accountabilities
-								<li>{{ACCOUNTABILITIES}}</li>
-								<li>{{ACCOUNTABILITIES}}</li>
-								<li>{{ACCOUNTABILITIES}}</li>
-							</ul>
-							<ul>Domains
-								<li>{{DOMAINS}}</li>
-							</ul>
-							<ul>Tensions
-								<li>{{TENSION}}</li>
-							</ul>
-						</li>
-					</ul>
-				</div>
-				<div data-role="collapsible">
-					<h1>Agenda Items</h1>
-					<ul>
-						<li>Agenda item 1</li>
-						<li>Agenda item 2</li>
-					</ul>
-				</div>
-				<div data-role="collapsible">
-					<h1>Proposals</h1>
-					<ul>
-						<li>Proposal 1</li>
-					</ul>
-				</div>
-				<div data-role="collapsible">
-					<h1>Objections</h1>
-					<ul>
-						<li>Objection 1</li>
-						<li>Objection 2</li>
-					</ul>
-				</div>
-			</div>			
-		</div>
+		<nav>
+			<div data-role="header">
+				<a href="#" id="main-menu" class="ui-btn ui-corner-all ui-icon-bars ui-btn-icon-notext show">Menu</a>
+				<div class="menu-container hide">
+					<a href="#" id="main-menu-close" class="ui-btn ui-corner-all ui-icon-delete ui-btn-icon-notext">Close</a>
+					<div data-role="collapsible">
+						<h3>Roles</h3>
+						<ul class="role-list"></ul>
+					</div>
+					<div data-role="collapsible">
+						<h1>Agenda Items</h1>
+						<ul>
+							<li>Agenda item 1</li>
+							<li>Agenda item 2</li>
+						</ul>
+					</div>
+					<div data-role="collapsible">
+						<h1>Proposals</h1>
+						<ul>
+							<li>Proposal 1</li>
+						</ul>
+					</div>
+					<div data-role="collapsible">
+						<h1>Objections</h1>
+						<ul>
+							<li>Objection 1</li>
+							<li>Objection 2</li>
+						</ul>
+					</div>
+				</div>			
+			</div>
+		</nav>
 
 		<div class="ui-content">
 			<ul id="chat_output">
 				<li>
-					<h4>Facilibot <span><small>(August 7, 2016, 3:45pm)</small></span></h4>
+					<h4>Facilibot<span>
+						<br />
+						<small>August 7, 2016, 3:45pm</small></span>
+					</h4>
 					<p>Welcome everyone! We’ll be starting with a <em>Check-in Round</em> (1/5) to get us going.</p>
 					<p><span class="role_name">{{ role.name }}</span>, please type in the input below a short check-in to get yourself present in the moment, here and now.</p>
 					<p class="example">Eg., “I just came in from catching some Pokémon on my lunch break so I’m a bit winded.”</p>
@@ -128,12 +97,33 @@
 
 		<div id="chat_input">
 			<div class="meeting_process_bar">
-				<div class="finished">Check-in Round (1/5)</div>
+				<ul>
+					<li class="round_checkin active">Check-in Round (1/5)</li>
+					<li class="round_adminconcerns">Admin Concerns (2/5)</li>
+					<li class="round_agendabuilding">Agenda Building (3/5)</li>
+					<li class="round_idm">Integrative Decision-Making (4/5)</li>
+					<li class="round_closing">Closing Round (5/5)</li>
+				</ul>
 			</div>
 			
-			<label for="checkin_input" class="ui-hidden-accessible">Checkin input</label>
-			<textarea name="checkin_input" id="checkin_input" placeholder="Type in your Check-in…"></textarea>
-			<button id="btn_checkin" class="ui-btn ui-btn-inline">Share</button>
+			<div id="checkin_section">
+				<label for="checkin_input" class="ui-hidden-accessible">Checkin input</label>
+				<textarea name="checkin_input" id="checkin_input" placeholder="Type in your Check-in…"></textarea>
+				<button id="btn_checkin" class="ui-btn ui-btn-inline">Share</button>
+			</div>
+
+			<div id="agendaitem_section" class="hide">
+				<label for="agendaitem_input" class="ui-hidden-accessible">Agenda Item input</label>
+				<textarea name="agendaitem_input" id="agendaitem_input" placeholder="Capture your tension in 2 – 3 words…"></textarea>
+				<button id="btn_agendaitem" class="ui-btn ui-btn-inline">Capture</button>
+			</div>
+
+			<div id="closing_section" class="hide">
+				<label for="closing_input" class="ui-hidden-accessible">Closing Round input</label>
+				<textarea name="closing_input" id="closing_input" placeholder="Offer a reflection for the past Governance Meeting"></textarea>
+				<button id="btn_closing" class="ui-btn ui-btn-inline">Reflect</button>
+			</div>
+
 		</div>
 
 	</div>
