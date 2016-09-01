@@ -48,37 +48,38 @@
 	</div>
 
 	<div data-role="page" id="page02_governance_meeting">
-
-		<div data-role="header" data-position="fixed">
-			<a href="#" id="main-menu" class="ui-btn ui-corner-all ui-icon-bars ui-btn-icon-notext show">Menu</a>
-			<div class="menu-container hide">
-				<a href="#" id="main-menu-close" class="ui-btn ui-corner-all ui-icon-delete ui-btn-icon-notext">Close</a>
-				<div data-role="collapsible">
-					<h3>Roles</h3>
-					<ul class="role-list"></ul>
-				</div>
-				<div data-role="collapsible">
-					<h1>Agenda Items</h1>
-					<ul>
-						<li>Agenda item 1</li>
-						<li>Agenda item 2</li>
-					</ul>
-				</div>
-				<div data-role="collapsible">
-					<h1>Proposals</h1>
-					<ul>
-						<li>Proposal 1</li>
-					</ul>
-				</div>
-				<div data-role="collapsible">
-					<h1>Objections</h1>
-					<ul>
-						<li>Objection 1</li>
-						<li>Objection 2</li>
-					</ul>
-				</div>
-			</div>			
-		</div>
+		<nav>
+			<div data-role="header">
+				<a href="#" id="main-menu" class="ui-btn ui-corner-all ui-icon-bars ui-btn-icon-notext show">Menu</a>
+				<div class="menu-container hide">
+					<a href="#" id="main-menu-close" class="ui-btn ui-corner-all ui-icon-delete ui-btn-icon-notext">Close</a>
+					<div data-role="collapsible">
+						<h3>Roles</h3>
+						<ul class="role-list"></ul>
+					</div>
+					<div data-role="collapsible">
+						<h1>Agenda Items</h1>
+						<ul>
+							<li>Agenda item 1</li>
+							<li>Agenda item 2</li>
+						</ul>
+					</div>
+					<div data-role="collapsible">
+						<h1>Proposals</h1>
+						<ul>
+							<li>Proposal 1</li>
+						</ul>
+					</div>
+					<div data-role="collapsible">
+						<h1>Objections</h1>
+						<ul>
+							<li>Objection 1</li>
+							<li>Objection 2</li>
+						</ul>
+					</div>
+				</div>			
+			</div>
+		</nav>
 
 		<div class="ui-content">
 			<ul id="chat_output">
@@ -113,8 +114,14 @@
 
 			<div id="agendaitem_section" class="hide">
 				<label for="agendaitem_input" class="ui-hidden-accessible">Agenda Item input</label>
-				<textarea name="agenda_input" id="agenda_input" placeholder="Capture your tension in 2 – 3 words…"></textarea>
+				<textarea name="agendaitem_input" id="agendaitem_input" placeholder="Capture your tension in 2 – 3 words…"></textarea>
 				<button id="btn_agendaitem" class="ui-btn ui-btn-inline">Capture</button>
+			</div>
+
+			<div id="closing_section" class="hide">
+				<label for="closing_input" class="ui-hidden-accessible">Closing Round input</label>
+				<textarea name="closing_input" id="closing_input" placeholder="Offer a reflection for the past Governance Meeting"></textarea>
+				<button id="btn_closing" class="ui-btn ui-btn-inline">Reflect</button>
 			</div>
 
 		</div>

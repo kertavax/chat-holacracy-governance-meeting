@@ -14,7 +14,6 @@
   margin-top: 0; }
 
 .menu-container {
-  z-index: 100;
   background-color: rgba(0, 0, 0, 0.3); }
   .menu-container .role-purpose, .menu-container .role-accountabilities, .menu-container .role-domains, .menu-container .role-tensions {
     margin-bottom: 1em; }
